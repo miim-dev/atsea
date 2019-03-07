@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "ts-node spec/test.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublishOnly": "echo \"WIP\""
   },
@@ -19,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/lumio/atsea/issues"
   },
-  "homepage": "https://github.com/lumio/atsea#readme"
+  "homepage": "https://github.com/lumio/atsea#readme",
+  "devDependencies": {
+    "@types/node": "^11.9.4",
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.3"
+  }
 }

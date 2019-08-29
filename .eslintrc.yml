@@ -1,0 +1,284 @@
+settings:
+  react:
+    pragma: React
+    version: detect
+env:
+  browser: true
+  es6: true
+  node: true
+  commonjs: true
+extends:
+  - 'eslint:recommended'
+  - 'plugin:@typescript-eslint/recommended'
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly
+parser: '@typescript-eslint/parser'
+plugins:
+  - '@typescript-eslint'
+rules:
+  array-callback-return:
+    - error
+  accessor-pairs:
+    - error
+  consistent-return:
+    - warn
+  curly:
+    - error
+    - all
+  dot-location:
+    - error
+    - property
+  eqeqeq:
+    - error
+  guard-for-in:
+    - error
+  max-classes-per-file:
+    - error
+    - 1
+  no-alert:
+    - warn
+  no-eq-null:
+    - error
+  no-eval:
+    - error
+  no-extend-native:
+    - error
+  no-global-assign:
+    - error
+  no-implied-eval:
+    - error
+  no-lone-blocks:
+    - error
+  no-loop-func:
+    - error
+  no-multi-spaces:
+    - error
+  no-multi-str:
+    - error
+  no-new:
+    - error
+  no-new-func:
+    - error
+  no-new-wrappers:
+    - error
+  no-param-reassign:
+    - error
+  no-proto:
+    - error
+  no-redeclare:
+    - error
+  no-return-await:
+    - error
+  no-sequences:
+    - error
+  no-useless-call:
+    - error
+  no-useless-catch:
+    - error
+  no-warning-comments:
+    - warn
+  radix:
+    - error
+    - always
+  require-await:
+    - error
+  wrap-iife:
+    - error
+  no-delete-var:
+    - error
+  no-label-var:
+    - error
+  no-shadow:
+    - error
+  no-use-before-define:
+    - error
+  no-unused-vars:
+    - error
+    - argsIgnorePattern: "^_"
+  array-bracket-spacing:
+    - error
+    - always
+  block-spacing:
+    - error
+    - always
+  brace-style:
+    - error
+    - 1tbs
+  camelcase:
+    - error
+    - properties: always
+  comma-dangle:
+    - error
+    - always-multiline
+  comma-spacing:
+    - error
+  computed-property-spacing:
+    - error
+    - always
+  eol-last:
+    - error
+    - always
+  func-call-spacing:
+    - error
+    - never
+  indent:
+    - error
+    - 2
+  linebreak-style:
+    - error
+    - unix
+  quotes:
+    - error
+    - single
+  semi:
+    - error
+    - never
+  jsx-quotes:
+    - error
+    - prefer-single
+  key-spacing:
+    - error
+  keyword-spacing:
+    - error
+  lines-between-class-members:
+    - error
+  max-depth:
+    - error
+  max-len:
+    - error
+    - code: 100
+      tabWidth: 2
+      ignoreComments: false
+      ignoreTrailingComments: true
+      ignoreUrls: true
+      ignoreStrings: true
+      ignoreTemplateLiterals: true
+      ignoreRegExpLiterals: true
+  max-lines:
+    - error
+  max-statements-per-line:
+    - error
+  multiline-comment-style:
+    - error
+  newline-per-chained-call:
+    - error
+  no-array-constructor:
+    - error
+  no-bitwise:
+    - error
+  no-lonely-if:
+    - error
+  no-mixed-operators:
+    - error
+  no-multi-assign:
+    - error
+  no-multiple-empty-lines:
+    - error
+  no-negated-condition:
+    - error
+  no-nested-ternary:
+    - warn
+  no-new-object:
+    - error
+  no-plusplus:
+    - error
+  no-tabs:
+    - error
+  no-trailing-spaces:
+    - error
+  no-unneeded-ternary:
+    - error
+  no-whitespace-before-property:
+    - error
+  nonblock-statement-body-position:
+    - error
+  object-curly-spacing:
+    - error
+    - always
+  operator-linebreak:
+    - error
+    - before
+  padded-blocks:
+    - error
+    - never
+  prefer-object-spread:
+    - error
+  quote-props:
+    - error
+    - as-needed
+  space-before-blocks:
+    - error
+    - always
+  space-before-function-paren:
+    - error
+    - anonymous: never
+      named: never
+      asyncArrow: always
+  space-in-parens:
+    - error
+    - always
+  space-infix-ops:
+    - error
+  space-unary-ops:
+    - error
+    - words: true
+      nonwords: false
+  spaced-comment:
+    - error
+    - always
+  switch-colon-spacing:
+    - error
+  template-tag-spacing:
+    - error
+    - never
+  arrow-spacing:
+    - error
+  generator-star-spacing:
+    - error
+  no-empty:
+    - error
+    - allowEmptyCatch: true
+  no-confusing-arrow:
+    - error
+  no-duplicate-imports:
+    - error
+  no-useless-computed-key:
+    - error
+  no-useless-constructor:
+    - error
+  no-useless-rename:
+    - error
+  no-var:
+    - error
+  object-shorthand:
+    - error
+  prefer-arrow-callback:
+    - error
+  prefer-const:
+    - error
+  prefer-numeric-literals:
+    - error
+  prefer-rest-params:
+    - error
+  prefer-spread:
+    - error
+  prefer-template:
+    - error
+  require-yield:
+    - error
+  rest-spread-spacing:
+    - error
+  symbol-description:
+    - error
+  template-curly-spacing:
+    - error
+    - always
+  '@typescript-eslint/member-delimiter-style':
+    - error
+    - multiline:
+        delimiter: none
+        requireLast: false
+      singleline:
+        delimiter: comma
+        requireLast: false

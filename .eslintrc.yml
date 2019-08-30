@@ -133,7 +133,8 @@ rules:
     - single
   semi:
     - error
-    - never
+    - always
+    - omitLastInOneLineBlock: true
   jsx-quotes:
     - error
     - prefer-single

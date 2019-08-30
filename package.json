@@ -1,9 +1,13 @@
 {
   "name": "atsea",
-  "version": "0.1.0",
   "description": "",
+  "version": "0.1.0",
+  "author": "Benjamin Falk <bf@cyanjoe.com>",
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
+    "start": "ts-node src/index.ts",
+    "lint": "eslint src/**/*.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublishOnly": "echo \"WIP\""
   },
@@ -14,10 +18,20 @@
   "keywords": [
     "terminal"
   ],
-  "author": "Benjamin Falk <bf@cyanjoe.com>",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/lumio/atsea/issues"
   },
-  "homepage": "https://github.com/lumio/atsea#readme"
+  "homepage": "https://github.com/lumio/atsea#readme",
+  "dependencies": {
+    "keypress": "^0.2.1"
+  },
+  "devDependencies": {
+    "@types/keypress": "^2.0.30",
+    "@types/node": "^12.7.2",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "eslint": "^6.2.2",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.6.2"
+  }
 }

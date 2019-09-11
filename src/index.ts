@@ -1,4 +1,21 @@
 /* eslint @typescript-eslint/no-var-requires: 0 */
+
+import DebugServer from '../lib/DebugServer';
+
+const port = 4921;
+const options = {
+  port: 0,
+  listen: 0,
+};
+
+if ( process.argv.indexOf( '--debug-listener' ) > -1 ) {
+  options.listen = port;
+}
+else {
+  options.port = port;
+}
+const s = new DebugServer( options );
+
 const keypress = require( 'keypress' );
 
 interface Key {
@@ -10,7 +27,7 @@ interface Key {
 }
 
 const mainEvent = ( ch: string, key: Key ): void => {
-  console.table( key );
+  s.log( { key, ch } );
   if ( key && key.ctrl && key.name === 'c' ) {
     process.stdin.pause();
   }

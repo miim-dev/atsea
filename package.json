@@ -6,7 +6,8 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "ts-node-dev --respawn src/index.ts",
+    "start:listener": "ts-node-dev --respawn src/index.ts --debug-listener",
     "lint": "eslint src/**/*.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublishOnly": "echo \"WIP\""
@@ -23,7 +24,8 @@
   },
   "homepage": "https://github.com/lumio/atsea#readme",
   "dependencies": {
-    "keypress": "^0.2.1"
+    "keypress": "0.2.1",
+    "kleur": "^3.0.3"
   },
   "devDependencies": {
     "@types/keypress": "^2.0.30",
@@ -32,6 +34,7 @@
     "@typescript-eslint/parser": "^2.0.0",
     "eslint": "^6.2.2",
     "ts-node": "^8.3.0",
+    "ts-node-dev": "^1.0.0-pre.42",
     "typescript": "^3.6.2"
   }
 }

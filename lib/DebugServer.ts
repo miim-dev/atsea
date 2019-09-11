@@ -83,6 +83,12 @@ class DebugServer extends Logger {
         delete this.clientList[ clientId ];
       }
 
+      client.on( 'data', ( data ) => {
+        if ( data.toString() === 'PING' ) {
+          client.write( 'PONG' );
+        }
+      } );
+
       client.on( 'end', () => {
         removeClientIdFromList();
       });
@@ -103,29 +109,33 @@ class DebugServer extends Logger {
       console.log( kleur.cyan( `Listening for messages on ${ this.client.remoteAddress }:${ this.client.remotePort }` ) );
     } );
 
-    this.client.setTimeout(5000);
-    this.client.setEncoding('utf8');
+    this.client.setTimeout( 60000 );
+    this.client.setEncoding( 'utf8' );
 
-    this.client.on('data', (data: any) => {
+    this.client.on( 'data', ( data: any ) => {
+      if ( data.toString() === 'PONG' ) {
+        return;
+      }
       console.log( data );
     });
 
-    this.client.on('end', () => {
-      console.log('Client socket disconnect. ');
+    this.client.on( 'end', () => {
+      console.log( 'Client socket disconnect.' );
       this.errorOccurred = true;
     });
 
-    this.client.on('timeout', () => {
-      console.log('Client connection timeout. ');
+    this.client.on( 'timeout', () => {
+      console.log( 'Client connection timeout.' );
       this.errorOccurred = true;
     });
 
-    this.client.on('error', (err: any) => {
-      console.error('error', JSON.stringify(err));
+    this.client.on( 'error', ( error: any ) => {
+      console.error( 'error', JSON.stringify( error ) );
       this.errorOccurred = true;
     });
 
-    const pingTimer: any = setInterval( () => {
+    let pingTimer: any;
+    pingTimer = setInterval( () => {
       if ( this.errorOccurred ) {
         return clearInterval( pingTimer );
       }

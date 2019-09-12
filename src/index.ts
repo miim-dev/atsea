@@ -1,22 +1,18 @@
-/* eslint @typescript-eslint/no-var-requires: 0 */
-const keypress = require( 'keypress' );
+import logger from './lib/logger';
+import keyevents from './lib/keyevents';
 
-interface Key {
-  name: string
-  ctrl: boolean
-  meta: boolean
-  shift: boolean
-  sequence: string
-}
-
-const mainEvent = ( ch: string, key: Key ): void => {
-  console.table( key );
-  if ( key && key.ctrl && key.name === 'c' ) {
-    process.stdin.pause();
-  }
+const port = 4921;
+const options = {
+  port: 0,
+  listen: 0,
 };
 
-keypress( process.stdin );
-process.stdin.on( 'keypress', mainEvent );
-process.stdin.setRawMode( true );
-process.stdin.resume();
+if ( process.argv.indexOf( '--debug-listener' ) > -1 ) {
+  options.listen = port;
+}
+else {
+  options.port = port;
+}
+logger.init( options );
+
+keyevents.init();

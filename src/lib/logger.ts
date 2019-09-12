@@ -1,3 +1,4 @@
+import util from 'util';
 import kleur from 'kleur';
 import net from 'net';
 
@@ -5,6 +6,14 @@ interface DebugServerOptions {
   port?: number;
   listen?: number;
 }
+
+const intensityFormatted = {
+  unknown: kleur.gray( 'UNKNOWN' ),
+  log: kleur.gray( 'LOG' ),
+  info: kleur.cyan( 'INFO' ),
+  warn: kleur.yellow( 'WARN' ),
+  error: kleur.red( 'ERROR' ),
+};
 
 class Logger {
   print( message: any, intensity: string ) {
@@ -34,9 +43,7 @@ class DebugServer extends Logger {
   client: any;
   errorOccurred: boolean = false;
 
-  constructor( options: DebugServerOptions ) {
-    super();
-
+  init( options: DebugServerOptions ) {
     if ( options.listen ) {
       this.initListener( options );
     }
@@ -67,7 +74,21 @@ class DebugServer extends Logger {
       message,
       intensity,
       time: Date.now(),
-    } ) );
+    } ) + '\n' );
+  }
+
+  private formatTime( timestamp?: number ) {
+    if ( !timestamp ) {
+      return '';
+    }
+
+    const pad = ( num: number ) => {
+      const str = '' + num;
+      return '0'.repeat( 2 - str.length ) + str;
+    }
+
+    const d = new Date( timestamp );
+    return `${ pad( d.getHours() ) }:${ pad( d.getMinutes() ) }:${ pad( d.getSeconds() )}`;
   }
 
   private initServer( options: DebugServerOptions ) {
@@ -116,8 +137,39 @@ class DebugServer extends Logger {
       if ( data.toString() === 'PONG' ) {
         return;
       }
-      console.log( data );
-    });
+
+      const lines = data.split( '\n' );
+      for ( const line of lines ) {
+        if ( !line.trim() ) {
+          continue;
+        }
+
+        try {
+          const parsed = JSON.parse( line );
+          const { time, intensity, message, ...rest } = parsed;
+          const timeLabel = this.formatTime( time );
+          const intensityLabel = intensity
+            ? (intensityFormatted as any )[ intensity ]
+            : intensityFormatted.unknown;
+          const messagePrintable = typeof message === 'object'
+            ? util.inspect( message, {
+              showHidden: false,
+              depth: null,
+              colors: true,
+              compact: false,
+            } )
+            : message.toString ? message.toString() : message;
+
+          const output = [ timeLabel, intensityLabel, messagePrintable ]
+            .filter( Boolean )
+            .join( ' ' );
+
+          console.log( output );
+        } catch ( _error ) {
+          console.log( line );
+        }
+      }
+    } );
 
     this.client.on( 'end', () => {
       console.log( 'Client socket disconnect.' );
@@ -145,4 +197,6 @@ class DebugServer extends Logger {
   }
 }
 
-export default DebugServer;
+const logger = new DebugServer();
+
+export default logger;

@@ -30,6 +30,7 @@ const mainEvent = ( ch: string, key: Key ): void => {
   s.log( { key, ch } );
   if ( key && key.ctrl && key.name === 'c' ) {
     process.stdin.pause();
+    process.exit( 0 );
   }
 };
 

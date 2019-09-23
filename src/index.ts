@@ -5,18 +5,17 @@ import Area from './lib/Area';
 
 const atsea = {
   Area,
-  render: ( areas: Area | Area[] ) => {
+  render: (areas: Area | Area[]) => {
     let arrayedAreas: Area[] = [];
-    if ( Array.isArray( areas ) ) {
+    if (Array.isArray(areas)) {
       arrayedAreas = areas;
-    }
-    else {
-      arrayedAreas = [ areas ];
+    } else {
+      arrayedAreas = [areas];
     }
 
-    arrayedAreas.forEach( ( area: Area ) => {
+    arrayedAreas.forEach((area: Area) => {
       area.render();
-    } );
+    });
   },
 };
 
@@ -27,23 +26,22 @@ const options = {
 };
 let mainTest = false;
 
-if ( process.argv.indexOf( '--debug-listener' ) > -1 ) {
+if (process.argv.indexOf('--debug-listener') > -1) {
   options.listen = port;
-}
-else {
+} else {
   options.port = port;
   mainTest = true;
 }
-logger.init( options );
+logger.init(options);
 
-if ( mainTest ) {
+if (mainTest) {
   // keyevents.init();
-  const a = new atsea.Area( {
+  const a = new atsea.Area({
     size: {
       width: 5,
       height: 3,
     },
-  } );
+  });
 
-  atsea.render( [ a ] );
+  atsea.render([a]);
 }

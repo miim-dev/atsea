@@ -1,5 +1,5 @@
 import atsea from '../lib/atsea';
 
-atsea( {
+atsea({
   height: 3,
-} );
+});

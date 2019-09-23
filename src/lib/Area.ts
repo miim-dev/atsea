@@ -23,7 +23,7 @@ class Area {
   };
   private realSize: AreaRealSize;
 
-  constructor( options: AreaOptions ) {
+  constructor(options: AreaOptions) {
     this.options = options;
     this.size = options.size || this.size;
   }
@@ -32,19 +32,19 @@ class Area {
     this.realSize = {
       cols: this.size.width as number,
       rows: this.size.height as number,
-    }
+    };
   }
 
   render() {
     this.calculateRealSize();
 
-    for ( let y = 0; y < this.realSize.rows; y += 1 ) {
-      for ( let x = 0; x < this.realSize.cols; x += 1 ) {
-        process.stdout.write( 'x' );
+    for (let y = 0; y < this.realSize.rows; y += 1) {
+      for (let x = 0; x < this.realSize.cols; x += 1) {
+        process.stdout.write('x');
       }
 
-      if ( y < this.realSize.rows - 1 ) {
-        process.stdout.write( '\n' );
+      if (y < this.realSize.rows - 1) {
+        process.stdout.write('\n');
       }
     }
   }

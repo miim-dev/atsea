@@ -1,8 +1,8 @@
-const bootstrap = ( stdout : any, height : number ) => {
-  stdout.write( '\n'.repeat( height ) );
+const bootstrap = (stdout: any, height: number) => {
+  stdout.write('\n'.repeat(height));
 };
 
-const atsea = ( options : any ) => {
+const atsea = (options: any) => {
   const opts = {
     stdout: process.stdout,
     stderr: process.stderr,
@@ -10,7 +10,7 @@ const atsea = ( options : any ) => {
     ...options,
   };
 
-  bootstrap( opts.stdout, opts.height );
+  bootstrap(opts.stdout, opts.height);
 };
 
 export default atsea;

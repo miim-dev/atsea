@@ -1,2 +1,5 @@
 /dist
 node_modules
+
+# Dependencies need to be locked anyway
+package-lock.json

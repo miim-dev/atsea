@@ -8,8 +8,8 @@
   "scripts": {
     "start": "ts-node-dev --respawn src/index.ts",
     "start:listener": "ts-node-dev --respawn src/index.ts --debug-listener",
+    "test": "ava",
     "lint": "eslint src/**/*.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "prepublishOnly": "echo \"WIP\"",
     "prettier": "prettier --write \"**/*.{ts,tsx,js,jsx,json,html,css,sass,scss,md}\""
   },
@@ -35,21 +35,33 @@
       "pre-commit": "lint-staged"
     }
   },
+  "ava": {
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register",
+      "tsconfig-paths/register"
+    ]
+  },
   "dependencies": {
     "keypress": "0.2.1",
-    "kleur": "^3.0.3"
+    "kleur": "3.0.3"
   },
   "devDependencies": {
-    "@types/keypress": "^2.0.30",
-    "@types/node": "^12.7.2",
-    "@typescript-eslint/eslint-plugin": "^2.0.0",
-    "@typescript-eslint/parser": "^2.0.0",
-    "eslint": "^6.2.2",
-    "husky": "^3.0.5",
-    "lint-staged": "^9.3.0",
-    "prettier": "^1.18.2",
-    "ts-node": "^8.3.0",
-    "ts-node-dev": "^1.0.0-pre.42",
-    "typescript": "^3.6.2"
+    "@types/keypress": "2.0.30",
+    "@types/node": "12.7.9",
+    "@typescript-eslint/eslint-plugin": "2.3.2",
+    "@typescript-eslint/parser": "2.3.2",
+    "ava": "2.4.0",
+    "eslint": "6.5.1",
+    "husky": "3.0.8",
+    "lint-staged": "9.4.1",
+    "prettier": "1.18.2",
+    "ts-node": "8.4.1",
+    "ts-node-dev": "1.0.0-pre.43",
+    "tsconfig-paths": "3.9.0",
+    "typescript": "3.6.3"
   }
 }
